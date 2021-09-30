@@ -1,0 +1,51 @@
+buildscript {
+	repositories {
+		mavenLocal()
+		maven { url 'https://maven.aliyun.com/repository/google/' }
+		maven { url 'https://maven.aliyun.com/repository/public/' }
+		maven { url 'https://maven.aliyun.com/repository/spring/' }
+		maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+		maven { url 'https://maven.aliyun.com/repository/spring-plugin/' }
+
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.8.RELEASE")
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.3.8.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenLocal()
+	maven { url 'https://maven.aliyun.com/repository/google/' }
+	maven { url 'https://maven.aliyun.com/repository/public/' }
+	maven { url 'https://maven.aliyun.com/repository/spring/' }
+	maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+	maven { url 'https://maven.aliyun.com/repository/spring-plugin/' }
+
+	mavenCentral()
+}
+ext {
+	set('springCloudVersion', "Hoxton.SR9")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.2.9.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}

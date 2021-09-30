@@ -1,0 +1,17 @@
+
+server:
+  port: 8082
+
+spring:
+  application:
+    name: second-service
+
+eureka:
+#  instance:
+#    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    #위치 지정하는 부분 defaultSZone에 내 서비스를 등록하겠다.
+#    service-url:
+#      defaultZone: http://127.0.0.1:8761/eureka
