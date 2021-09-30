@@ -1,0 +1,15 @@
+#localhost:8761 접속 가능, 인스턴스 여부 확인 가능
+server:
+  port: 8761
+
+#MSA 고유 아이디
+spring:
+  application:
+    name: discoveryservice
+
+
+eureka:
+  client:
+#설정 하지않으면 둘다 기본 true. 자신에게 자신의 정보를 저장하지 않도록 설정
+    register-with-eureka: false
+    fetch-registry: false

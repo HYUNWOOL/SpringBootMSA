@@ -1,0 +1,2 @@
+# msaEurekaServer
+masEurekaServer
