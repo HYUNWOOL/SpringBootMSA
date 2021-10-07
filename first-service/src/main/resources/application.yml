@@ -1,17 +1,17 @@
 
 server:
-  port: 8081
-
+  port: 0
+# 유레카에서는 0으로 표시되기때문에, 인스턴스 아이디 값을 줘야한다.
 spring:
   application:
     name: first-service
 
 eureka:
-#  instance:
-#    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: true
+    fetch-registry: true
     #위치 지정하는 부분 defaultSZone에 내 서비스를 등록하겠다.
-#    service-url:
-#      defaultZone: http://127.0.0.1:8761/eureka
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
