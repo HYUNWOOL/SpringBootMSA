@@ -9,7 +9,7 @@ import java.util.*;
 public class UserDto {
     private String email;
     private String name;
-    private String pwd;
+    private String password;
     private String userId;
     private Date createAt;
 

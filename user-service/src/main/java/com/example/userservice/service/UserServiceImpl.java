@@ -7,6 +7,7 @@ import com.example.userservice.vo.ResponseOrder;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,19 @@ public class UserServiceImpl implements UserService{
     UserRepository userRepository;
     BCryptPasswordEncoder encoder;
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(username);
+    System.out.println(user.toString());
+        if(user == null){
+            throw new UsernameNotFoundException(username);
+        }
+
+        return new org.springframework.security.core.userdetails.User(
+            user.getEmail(), user.getEncryptedPwd(),
+            true, true, true, true, new ArrayList<>());
+    }
+
     @Autowired
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder encoder){
         this.userRepository = userRepository;
@@ -27,11 +41,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public UserDto createUser(UserDto userDto) {
         userDto.setUserId(UUID.randomUUID().toString());
-
+    System.out.println(userDto.toString());
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         User user = mapper.map(userDto, User.class);
-        user.setEncryptedPwd(encoder.encode(userDto.getPwd()));
+        user.setEncryptedPwd(encoder.encode(userDto.getPassword()));
 
         userRepository.save(user);
 

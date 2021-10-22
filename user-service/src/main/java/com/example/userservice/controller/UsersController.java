@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/user-service")
+@RequestMapping("/")
 public class UsersController {
     private Environment env;
     private UserService userService;

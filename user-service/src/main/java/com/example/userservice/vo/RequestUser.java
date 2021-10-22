@@ -21,5 +21,5 @@ public class RequestUser {
 
     @NotNull(message = "password cannot be null")
     @Size(min = 8, message = "8 chars")
-    private String pwd;
+    private String password;
 }
