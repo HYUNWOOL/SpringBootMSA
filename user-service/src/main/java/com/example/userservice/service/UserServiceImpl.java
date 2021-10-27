@@ -4,6 +4,7 @@ import com.example.userservice.dto.UserDto;
 import com.example.userservice.entity.User;
 import com.example.userservice.repository.UserRepository;
 import com.example.userservice.vo.ResponseOrder;
+import org.bouncycastle.math.raw.Mod;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,9 @@ public class UserServiceImpl implements UserService{
     UserRepository userRepository;
     BCryptPasswordEncoder encoder;
 
-    @Override
+    @Override//3번
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(username);
-    System.out.println(user.toString());
         if(user == null){
             throw new UsernameNotFoundException(username);
         }
@@ -64,6 +64,13 @@ public class UserServiceImpl implements UserService{
         List<ResponseOrder> orders = new ArrayList<>();
         userDto.setOrders(orders);
 
+        return userDto;
+    }
+
+    @Override
+    public UserDto getUserDetailsByEmail(String userName) {
+        User user = userRepository.findByEmail(userName);
+        UserDto userDto = new ModelMapper().map(user, UserDto.class);
         return userDto;
     }
 

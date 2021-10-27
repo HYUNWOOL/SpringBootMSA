@@ -31,13 +31,15 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/**")
             .hasIpAddress("192.168.0.7")// 아이피
             .and()
+            //인증 관련됨 여기서 호출.
             .addFilter(getAuthenticationFilter());
 
     }
 
     private AuthenticationFilter getAuthenticationFilter() throws Exception {
-        AuthenticationFilter authenticationFilter = new AuthenticationFilter();
-        authenticationFilter.setAuthenticationManager(authenticationManager());
+        //여기로 이동해서 다시 인스턴스 생성
+        AuthenticationFilter authenticationFilter = new AuthenticationFilter(authenticationManager(), userService, env);
+//        authenticationFilter.setAuthenticationManager(authenticationManager());
 
         return authenticationFilter;
     }
