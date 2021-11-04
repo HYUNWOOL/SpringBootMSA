@@ -33,8 +33,11 @@ public class UsersController {
 
     @GetMapping("/health-check")
     public String health_check(){
-        return String.format("It's Working this Class on Port %s",env
-        .getProperty("local.server.port"));
+        return String.format("It's Working in User service"
+            + ", port(local.server.port)="+env.getProperty("local.server.port")
+            +", port(server.port)="+env.getProperty("server.port")
+            +", with token secret ="+env.getProperty("token.secret")
+            +", with token time="+env.getProperty("token.expiration_time"));
     }
 
     @GetMapping("/welcome")

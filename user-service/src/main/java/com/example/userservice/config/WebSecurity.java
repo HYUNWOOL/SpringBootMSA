@@ -28,6 +28,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 //            .headers().frameOptions().disable()
 //            .and()
 //            .authorizeRequests().antMatchers("/**/**").permitAll();
+
+        http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         http.authorizeRequests().antMatchers("/**")
             .hasIpAddress("192.168.0.7")// 아이피
             .and()
