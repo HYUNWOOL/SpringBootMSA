@@ -1,6 +1,6 @@
 token:
   expiration_time: 864000000 #하루짜리 24 * 60 * 60 * 1000
-  secret: my_token_changed
-
+  secret: my_token_prod
+  
   gateway:
     ip: 192.168.0.7
