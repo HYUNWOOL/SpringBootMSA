@@ -24,6 +24,7 @@ dependencies {
 	implementation 'javax.xml.bind:jaxb-api:2.1'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-bus-amqp', version: '3.0.0'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
