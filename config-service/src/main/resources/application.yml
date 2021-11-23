@@ -5,8 +5,26 @@ server:
 spring:
   application:
     name: config-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: file:///Users/hyunwoo/Documents/ecommerce/git-local-repo
+        native:
+          search-locations: file:///Users/hyunwoo/Documents/ecommerce/git-local-repo
+#        git:
+#          uri: file:///Users/hyunwoo/Documents/ecommerce/git-local-repo
+#           uri: https://github.com/HYUNWOOL/SpringBootMSA
+           ## private 일 경우
+#           username: {}
+#           password: {}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace, busrefresh
