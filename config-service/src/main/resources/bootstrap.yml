@@ -1,0 +1,6 @@
+encrypt:
+#  key: a1234
+  key-store:
+    location: file:///Users/hyunwoo/Documents/ecommerce/keystore/apiEncryptionKey.jks
+    password: 1q2w3e4r
+    alias: apiEncryptionKey

@@ -21,6 +21,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private Environment env;
+
+    @Override
+    public void configure(org.springframework.security.config.annotation.web.builders.WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/h2-console/**");
+    }
     //권한 2
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -29,7 +34,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 //            .and()
 //            .authorizeRequests().antMatchers("/**/**").permitAll();
 
-        http.authorizeRequests().antMatchers("/actuator/**").permitAll();
+        http.authorizeRequests().antMatchers("/actuator/**").permitAll()
+        .and().authorizeRequests().antMatchers("/h2-console/**").permitAll();
         http.authorizeRequests().antMatchers("/**")
             .hasIpAddress("192.168.0.7")// 아이피
             .and()

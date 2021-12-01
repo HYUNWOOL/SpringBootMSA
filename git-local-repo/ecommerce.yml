@@ -1,6 +1,6 @@
 token:
   expiration_time: 864000000 #하루짜리 24 * 60 * 60 * 1000
-  secret: my_token_changed_#2
+  secret: '{cipher}AQBBNMLudkKCQk9VqjFzv6d9ptyLv5sodQPz/AS4PNEHHVfW/RmmgNsElY8Ey6U8eTMIba0HTZX9z6bMcAv+HYdfM/Ont7ix/twF5UbjGO7u+9rcPExnrZOGj1AJCQwkXQ23c3p3EeMHKj6sN+zKUGl730KLuGvHRH4+6A7RnjuL8zZ+SYEvOKwiTWSMm2TPKcz1Kwh2DD3Z1EczSQqhfFQaIWWLxrGsZUHs40wkkdzePsLtr3DV6VCnj6Q4fuY8nRI6kmGpu/Mo6NUQGS1RBKUTGuToDTOvRRO672OTQvwJoZNcBbeowDoMxxqaPzqvI+fKINQoXt7MEHRuwW9j/Y3JCqMRXxKplkEplfqqxVWwLxKoMnK+0Fve5WIHGWuxsNRlh9xHZBBg8LELVLPlj8Ua'
 
   gateway:
     ip: 192.168.0.7
